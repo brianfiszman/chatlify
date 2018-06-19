@@ -1,0 +1,12 @@
+@import "~materialize-css/sass/materialize";
+html,
+body,
+main,
+#root {
+    height: 100%;
+}
+
+.conversation {
+    overflow-y: auto;
+    height: 90% !important;
+}
