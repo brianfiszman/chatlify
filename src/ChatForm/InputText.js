@@ -8,6 +8,7 @@ class InputText extends Component {
         className="col s11 input-field "
         placeholder="Escribir mensaje"
         onChange={this.props.onTextChange}
+        value={this.props.value}
       />
     );
   }

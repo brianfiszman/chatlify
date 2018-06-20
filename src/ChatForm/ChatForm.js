@@ -29,7 +29,11 @@ class ChatForm extends Component {
         })
       );
       this.props.onSubmit();
+      this.setState({
+        text: ""
+      });
     }
+
     event.preventDefault();
   }
 
@@ -48,7 +52,7 @@ class ChatForm extends Component {
           method="post"
           onSubmit={this.handleSubmit}
         >
-          <InputText onTextChange={this.onTextChange} />
+          <InputText onTextChange={this.onTextChange} value={this.state.text} />
           <InputSubmit />
         </form>
       </article>
