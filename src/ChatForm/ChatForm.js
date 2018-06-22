@@ -21,7 +21,7 @@ class ChatForm extends Component {
     } else {
       const querystring = require("querystring");
       axios.post(
-        "/chats",
+        "/api/chat",
         querystring.stringify({
           user: this.props.user,
           text: this.state.text

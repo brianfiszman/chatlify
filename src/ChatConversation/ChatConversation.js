@@ -24,7 +24,7 @@ class ChatConversation extends Component {
   componentDidMount() {
     const getMessages = () => {
       let lastElement = this.getLastMessageId();
-      let url = lastElement ? "/chats?id=" + lastElement : "/chats";
+      let url = lastElement ? "/api/chat?id=" + lastElement : "/api/chat";
       axios
         .get(url, { timeout: 1000 * 100 })
         .then(res => {
