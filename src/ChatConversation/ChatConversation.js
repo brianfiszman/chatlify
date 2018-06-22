@@ -44,14 +44,16 @@ class ChatConversation extends Component {
     return (
       <article className="row conversation-container">
         <section className="col-12 conversation px-0">
-          {this.state.messages.map(message => (
-            <Message
-              key={message.id}
-              user={message.user}
-              text={message.text}
-              timestamps={message.timestamps ? message.timestamps : ""}
-            />
-          ))}
+          {this.state.messages
+            ? this.state.messages.map(message => (
+                <Message
+                  key={message.id}
+                  user={message.user}
+                  text={message.text}
+                  timestamps={message.timestamps ? message.timestamps : ""}
+                />
+              ))
+            : ""}
         </section>
       </article>
     );
