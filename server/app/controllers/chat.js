@@ -59,7 +59,8 @@ exports.create = (req, res, db) => {
   } else {
     const message = {
       user: req.body.user,
-      text: req.body.text
+      text: req.body.text,
+      timestamps: new Date().toLocaleString()
     };
     db.collection(collection).insert(message, (err, result) => {
       if (err) {

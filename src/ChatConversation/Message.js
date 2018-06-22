@@ -8,7 +8,16 @@ class Message extends Component {
   render() {
     return (
       <article className="col-12 message-item py-0 mw-100">
-        <section className="title font-weight-bold">{this.props.user}</section>
+        <section className="title font-weight-bold">
+          {this.props.user + " "}
+          {this.props.timestamps ? (
+            <span className="font-weight-normal text-muted small">
+              {this.props.timestamps}
+            </span>
+          ) : (
+            ""
+          )}
+        </section>
         <section>{this.props.text}</section>
       </article>
     );
