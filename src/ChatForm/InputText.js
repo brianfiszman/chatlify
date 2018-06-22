@@ -5,10 +5,12 @@ class InputText extends Component {
     return (
       <input
         type="text"
-        className="col s11 input-field "
+        className="form-control"
         placeholder="Escribir mensaje"
         onChange={this.props.onTextChange}
         value={this.props.value}
+        aria-label="Escribir mensaje"
+        aria-describedby="basic-addon2"
       />
     );
   }

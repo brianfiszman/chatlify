@@ -26,7 +26,7 @@ class ChatConversation extends Component {
       let lastElement = this.getLastMessageId();
       let url = lastElement ? "/chats?id=" + lastElement : "/chats";
       axios
-        .get(url, { timeout: 25000 })
+        .get(url, { timeout: 1000 * 100 })
         .then(res => {
           this.setState({ messages: res.data });
           this.keepScrollDown();
@@ -42,13 +42,13 @@ class ChatConversation extends Component {
 
   render() {
     return (
-      <div className="row conversation">
-        <ul className="col s12 collection">
+      <article className="row conversation-container">
+        <ul className="col list-group list-group-flush conversation p-0">
           {this.state.messages.map(message => (
             <Message key={message.id} user={message.user} text={message.text} />
           ))}
         </ul>
-      </div>
+      </article>
     );
   }
 }

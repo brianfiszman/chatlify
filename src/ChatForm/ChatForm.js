@@ -47,7 +47,7 @@ class ChatForm extends Component {
     return (
       <article className="row">
         <form
-          className="col s12"
+          className="col-12 input-group"
           action=""
           method="post"
           onSubmit={this.handleSubmit}
