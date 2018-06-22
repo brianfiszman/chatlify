@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ChatApp from "./ChatApp";
-import InputUser from "./Login/InputUser";
+import Login from "./Login/Login";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={InputUser} />
+          <Route exact path="/" component={Login} />
           <Route path="/chatapp/:user" component={ChatApp} />
         </Switch>
       </BrowserRouter>
