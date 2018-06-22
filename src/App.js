@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ChatForm from "./ChatForm/ChatForm";
+import InputUser from "./ChatForm/InputUser";
 import ChatConversation from "./ChatConversation/ChatConversation";
 
 class App extends Component {
@@ -7,8 +8,11 @@ class App extends Component {
     super(props);
 
     this.state = {
+      user: "",
       messageSent: false
     };
+
+    this.onTextChange = this.onTextChange.bind(this);
   }
 
   handleSubmit() {
@@ -17,11 +21,21 @@ class App extends Component {
     });
   }
 
+  onTextChange(event) {
+    this.setState({
+      user: event.target.value
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
+        <InputUser onChange={this.onTextChange} />
         <ChatConversation />
-        <ChatForm onSubmit={this.handleSubmit.bind(this)} />
+        <ChatForm
+          user={this.state.user}
+          onSubmit={this.handleSubmit.bind(this)}
+        />
       </React.Fragment>
     );
   }

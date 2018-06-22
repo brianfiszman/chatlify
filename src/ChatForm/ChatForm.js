@@ -8,7 +8,6 @@ class ChatForm extends Component {
     super(props);
 
     this.state = {
-      user: Math.random() * (10000000 - 1),
       text: ""
     };
 
@@ -24,7 +23,7 @@ class ChatForm extends Component {
       axios.post(
         "/chats",
         querystring.stringify({
-          user: this.state.user,
+          user: this.props.user,
           text: this.state.text
         })
       );
