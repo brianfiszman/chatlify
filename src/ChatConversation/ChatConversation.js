@@ -43,11 +43,11 @@ class ChatConversation extends Component {
   render() {
     return (
       <article className="row conversation-container">
-        <ul className="col list-group list-group-flush conversation p-0">
+        <section className="col-12 conversation px-0">
           {this.state.messages.map(message => (
             <Message key={message.id} user={message.user} text={message.text} />
           ))}
-        </ul>
+        </section>
       </article>
     );
   }

@@ -19,10 +19,10 @@ class App extends Component {
 
   render() {
     return (
-      <main className="container">
+      <React.Fragment>
         <ChatConversation />
         <ChatForm onSubmit={this.handleSubmit.bind(this)} />
-      </main>
+      </React.Fragment>
     );
   }
 }

@@ -13,6 +13,7 @@ main,
 .conversation {
     height: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .message-item {

@@ -7,12 +7,10 @@ class Message extends Component {
 
   render() {
     return (
-      <li className="list-group-item message-item py-0">
-        <div className="title font-weight-bold text-nowrap text-nowrap">
-          {this.props.user}
-        </div>
-        <div>{this.props.text}</div>
-      </li>
+      <article className="col-12 message-item py-0 mw-100">
+        <section className="title font-weight-bold">{this.props.user}</section>
+        <section>{this.props.text}</section>
+      </article>
     );
   }
 }
