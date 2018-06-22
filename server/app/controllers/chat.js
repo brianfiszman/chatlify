@@ -60,7 +60,7 @@ exports.create = (req, res, db) => {
     const message = {
       user: req.body.user,
       text: req.body.text,
-      timestamps: new Date().toLocaleString()
+      timestamps: new Date().toUTCString()
     };
     db.collection(collection).insert(message, (err, result) => {
       if (err) {

@@ -12,7 +12,7 @@ class Message extends Component {
           {this.props.user + " "}
           {this.props.timestamps ? (
             <span className="font-weight-normal text-muted small">
-              {this.props.timestamps}
+              {new Date(this.props.timestamps).toLocaleString()}
             </span>
           ) : (
             ""
