@@ -26,7 +26,7 @@ class ChatConversation extends Component {
       let lastElement = this.getLastMessageId();
       let url = lastElement ? "/chats?id=" + lastElement : "/chats";
       axios
-        .get(url, { timeout: 25000 })
+        .get(url, { timeout: 1000 * 100 })
         .then(res => {
           this.setState({ messages: res.data });
           this.keepScrollDown();
