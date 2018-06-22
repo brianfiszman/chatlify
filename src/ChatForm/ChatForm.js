@@ -16,8 +16,8 @@ class ChatForm extends Component {
   }
 
   handleSubmit(event) {
-    if (this.state.text === "" || this.state.user === "") {
-      alert("Escribir mensaje");
+    if (this.state.text === "" || this.props.user === "") {
+      alert("El campo de mensaje o usuario están vacíos.");
     } else {
       const querystring = require("querystring");
       axios.post(
