@@ -54,7 +54,7 @@ const poll = (id, res, db) => {
 };
 
 exports.create = (req, res, db) => {
-  if (req.body.text === "" || req.body.user === "") {
+  if (!req.body.text || !req.body.user) {
     res.send("Prohibido mandar fruta");
   } else {
     const message = {
