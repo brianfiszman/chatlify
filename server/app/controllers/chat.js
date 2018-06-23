@@ -1,14 +1,16 @@
 const ObjectID = require("mongodb").ObjectID;
 const collection = "messages";
-const getAllResults = function(db) {
-  db.collection(collection)
+const queryAllResult = db => {
+  return db
+    .collection(collection)
     .find()
-    .toArray((err, results) => {
-      this.r = results;
-      this.e = err;
+    .toArray()
+    .then(result => {
+      return result;
+    })
+    .catch(err => {
+      return err;
     });
-
-  return this.e ? this.e : this.r;
 };
 
 const queryLastResult = db => {
@@ -31,15 +33,25 @@ const getLastResult = async db => {
   return result;
 };
 
-const poll = (id, res, db) => {
+const getAllResult = async db => {
+  let result = await queryAllResult(db);
+  return result;
+};
+
+const sendAllResult = async (db, res) => {
+  let allResults = await getAllResult(db);
+  res.send(allResults);
+  res.end();
+};
+
+const poll = async (id, res, db) => {
   if (id) {
     var i = 0;
-    var timeout = async () => {
-      var lastResult = await getLastResult(db);
+    let timeout = async () => {
+      let lastResult = await getLastResult(db);
       if (lastResult && lastResult != id) {
         i = 100;
-        res.send(getAllResults(db));
-        res.end();
+        await sendAllResult(db, res);
       }
       if (++i < 100) {
         setTimeout(timeout, 1000);
@@ -48,8 +60,7 @@ const poll = (id, res, db) => {
 
     timeout();
   } else {
-    res.send(getAllResults(db));
-    res.end();
+    await sendAllResult(db, res);
   }
 };
 
