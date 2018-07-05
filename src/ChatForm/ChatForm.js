@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import axios from "axios";
 import InputSubmit from "./InputSubmit";
 import InputText from "./InputText";
-import axios from "axios";
 
 class ChatForm extends Component {
   constructor(props) {
@@ -13,6 +13,12 @@ class ChatForm extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onTextChange = this.onTextChange.bind(this);
+  }
+
+  onTextChange(event) {
+    this.setState({
+      text: event.target.value
+    });
   }
 
   handleSubmit(event) {
@@ -34,12 +40,6 @@ class ChatForm extends Component {
     }
 
     event.preventDefault();
-  }
-
-  onTextChange(event) {
-    this.setState({
-      text: event.target.value
-    });
   }
 
   render() {

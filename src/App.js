@@ -1,7 +1,7 @@
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import React, { Component } from "react";
 import ChatApp from "./ChatApp";
 import Login from "./Login/Login";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {

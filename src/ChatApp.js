@@ -11,6 +11,7 @@ class ChatApp extends Component {
     };
 
     this.onTextChange = this.onTextChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit() {
@@ -31,7 +32,7 @@ class ChatApp extends Component {
         <ChatConversation />
         <ChatForm
           user={this.props.match.params.user}
-          onSubmit={this.handleSubmit.bind(this)}
+          onSubmit={this.handleSubmit}
         />
       </React.Fragment>
     );

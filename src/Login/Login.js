@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import InputUser from "./InputUser";
 import Header from "./Header";
-import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -11,6 +11,9 @@ class Login extends Component {
       user: "",
       fireRedirect: false
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateUser = this.updateUser.bind(this);
   }
 
   handleSubmit(e) {
@@ -43,8 +46,8 @@ class Login extends Component {
               )}
               <Header />
               <InputUser
-                handleSubmit={this.handleSubmit.bind(this)}
-                updateUser={this.updateUser.bind(this)}
+                handleSubmit={this.handleSubmit}
+                updateUser={this.updateUser}
               />
             </section>
           </section>

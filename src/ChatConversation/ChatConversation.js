@@ -11,16 +11,6 @@ class ChatConversation extends Component {
     };
   }
 
-  getLastMessageId() {
-    let length = this.state.messages ? this.state.messages.length : 0;
-    return length > 0 ? this.state.messages[length - 1]._id : undefined;
-  }
-
-  keepScrollDown() {
-    var objDiv = document.querySelector(".conversation");
-    objDiv.scrollTop = objDiv.scrollHeight;
-  }
-
   componentDidMount() {
     const getMessages = () => {
       let lastElement = this.getLastMessageId();
@@ -38,6 +28,16 @@ class ChatConversation extends Component {
     };
 
     getMessages();
+  }
+
+  getLastMessageId() {
+    let length = this.state.messages ? this.state.messages.length : 0;
+    return length > 0 ? this.state.messages[length - 1]._id : undefined;
+  }
+
+  keepScrollDown() {
+    var objDiv = document.querySelector(".conversation");
+    objDiv.scrollTop = objDiv.scrollHeight;
   }
 
   render() {
