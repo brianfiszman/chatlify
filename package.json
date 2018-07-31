@@ -24,10 +24,13 @@
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mongodb": "^3.0.10",
+    "prettier": "^1.14.0",
     "querystring": "^0.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-router-dom": "^4.3.1"
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -41,6 +44,7 @@
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-flowtype": "^2.49.3",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.0",
