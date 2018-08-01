@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import React, { Component } from "react";
 import ChatApp from "./ChatApp";
-import Login from "./Login/Login";
+import LoginContainer from "./Login/LoginContainer";
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={LoginContainer} />
           <Route path="/chatapp/:user" component={ChatApp} />
         </Switch>
       </BrowserRouter>
