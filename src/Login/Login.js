@@ -4,54 +4,57 @@ import InputUser from "./InputUser";
 import Header from "./Header";
 
 class Login extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			user: "",
-			fireRedirect: false
-		};
+    this.state = {
+      user: "",
+      fireRedirect: false
+    };
 
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.updateUser = this.updateUser.bind(this);
-	}
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+  }
 
-	handleSubmit(e) {
-		const { user } = this.state;
+  handleSubmit(e) {
+    const { user } = this.state;
 
-		e.preventDefault();
-		if (user) {
-			this.setState({
-				fireRedirect: true
-			});
-		} else {
-			alert("Por favor introducir usuario");
-		}
-	}
+    e.preventDefault();
+    if (user) {
+      this.setState({
+        fireRedirect: true
+      });
+    } else {
+      alert("Por favor introducir usuario");
+    }
+  }
 
-	updateUser(e) {
-		this.setState({
-			user: e.target.value
-		});
-	}
+  updateUser(e) {
+    this.setState({
+      user: e.target.value
+    });
+  }
 
-	render() {
-		const { fireRedirect, user } = this.state;
+  render() {
+    const { fireRedirect, user } = this.state;
 
-		return (
-  <article className="row align-content-center h-100">
-    <section className="col h-50">
-      <section className="row align-items-center align-content-center justify-content-center h-100">
-        <section className="col">
-          {fireRedirect && <Redirect push to={"/chatapp/" + user} />}
-          <Header />
-          <InputUser handleSubmit={this.handleSubmit} updateUser={this.updateUser} />
+    return (
+      <article className="row align-content-center h-100">
+        <section className="col h-50">
+          <section className="row align-items-center align-content-center justify-content-center h-100">
+            <section className="col">
+              {fireRedirect && <Redirect push to={"/chatapp/" + user} />}
+              <Header />
+              <InputUser
+                handleSubmit={this.handleSubmit}
+                updateUser={this.updateUser}
+              />
+            </section>
+          </section>
         </section>
-      </section>
-    </section>
-  </article>
-		);
-	}
+      </article>
+    );
+  }
 }
 
 export default Login;
