@@ -27,7 +27,7 @@ module.exports = merge(common, {
     path: BUILD_DIR,
     filename: "bundle.js"
   },
-  watch: true,
+  watch: false,
   devServer: {
     contentBase: "./public",
     historyApiFallback: true,
