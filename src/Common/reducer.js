@@ -1,6 +1,6 @@
 import { SET_USER } from "./actions";
 
-const initialState = { user: [] };
+const initialState = { user: "" };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
