@@ -1,17 +1,30 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { setUser } from "../Common/actions";
 import InputUser from "./InputUser";
 
 const Header = () => (
   <h1 className="col-12 col-md-8 col-lg-6 mx-auto pb-5">Bienvenido usuario</h1>
 );
 
+const mapDispatchToProps = dispatch => {
+  return {
+    setUser: user => {
+      dispatch(setUser(user));
+    }
+  };
+};
+
+const mapStateToProps = state => {
+  return { user: state.user };
+};
+
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: "",
       fireRedirect: false
     };
 
@@ -20,7 +33,7 @@ class Login extends Component {
   }
 
   handleSubmit(e) {
-    const { user } = this.state;
+    const { user } = this.props;
 
     e.preventDefault();
     if (user) {
@@ -33,31 +46,27 @@ class Login extends Component {
   }
 
   updateUser(e) {
-    this.setState({
-      user: e.target.value
-    });
+    this.props.setUser({ user: e.target.value });
   }
 
   render() {
-    const { fireRedirect, user } = this.state;
+    const { fireRedirect } = this.state;
+    const { user } = this.props;
 
     return (
-      <article className="row align-content-center h-100">
-        <section className="col h-50">
-          <section className="row align-items-center align-content-center justify-content-center h-100">
-            <section className="col">
-              {fireRedirect && <Redirect push to={"/chatapp/" + user} />}
-              <Header />
-              <InputUser
-                handleSubmit={this.handleSubmit}
-                updateUser={this.updateUser}
-              />
-            </section>
-          </section>
-        </section>
-      </article>
+      <React.Fragment>
+        {fireRedirect && <Redirect push to={"/chatapp/" + user} />}
+        <Header />
+        <InputUser
+          handleSubmit={this.handleSubmit}
+          updateUser={this.updateUser}
+        />
+      </React.Fragment>
     );
   }
 }
 
-export default Login;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
