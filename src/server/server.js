@@ -2,11 +2,11 @@
 ("use strict");
 
 import { MongoClient } from "mongodb";
+import express from "express";
+import bodyParser from "body-parser";
+import db from "./config/db";
 
-const express = require("express"),
-  app = express(),
-  bodyParser = require("body-parser"),
-  db = require(`${__dirname}/config/db`);
+const app = express();
 
 app.set("port", process.env.PORT || 5000);
 
