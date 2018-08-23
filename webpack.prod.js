@@ -10,7 +10,7 @@ const express = require("express");
 const path = require("path");
 
 const BUILD_DIR = path.resolve(__dirname, "public");
-const APP_DIR = path.resolve(__dirname, "e/client");
+const APP_DIR = path.resolve(__dirname, "src/client");
 
 const app = express();
 
