@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "babel-node ./src/server/server.js",
-    "heroku-postbuild": "yarn build",
+    "start": "nodemon ./src/server/server.js --exec babel-node",
+    "heroku-postbuild": "cd client && yarn && yarn run build",
     "dev": "webpack -d --watch",
     "build": "webpack --optimize-minimize --config webpack.prod.js --mode production",
     "lint": "esw webpack.config.* src tools --color",
