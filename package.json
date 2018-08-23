@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "nodemon .src/server/server.js --exec babel-node && webpack -d --watch",
+    "start": "nodemon ./src/server/server.js --exec babel-node && webpack -d --watch",
     "dev": "webpack -d --watch",
     "build": "webpack --optimize-minimize --config webpack.prod.js --mode production",
     "lint": "esw webpack.config.* src tools --color",
@@ -55,6 +55,7 @@
     "file-loader": "^1.1.11",
     "flow": "^0.2.3",
     "node-sass": "^4.9.2",
+    "nodemon": "^1.18.3",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
