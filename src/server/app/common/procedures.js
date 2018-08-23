@@ -1,4 +1,4 @@
-export const queryAllResult = (db, collection) =>
+export const queryAllResults = (db, collection) =>
   db
     .collection(collection)
     .find()
@@ -21,7 +21,7 @@ export const queryOneResult = (db, res, collection, details) =>
     .collection(collection)
     .findOne(details, (err, item) => sendResponse(res, err || item));
 
-export const insertToCollection = (db, res, collection, message) =>
+export const insert = (db, res, collection, message) =>
   db
     .collection(collection)
     .insertOne(message, (err, result) =>
