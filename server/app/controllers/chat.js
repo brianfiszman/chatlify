@@ -1,45 +1,21 @@
-const ObjectID = require("mongodb").ObjectID;
-const collection = "messages";
-const queryAllResult = db => {
-  return db
-    .collection(collection)
-    .find()
-    .toArray()
-    .then(result => {
-      return result;
-    })
-    .catch(err => {
-      return err;
-    });
-};
+import { queryAllResult, queryLastResult } from "../common/procedures";
 
-const queryLastResult = db => {
-  return db
-    .collection(collection)
-    .find()
-    .sort({ _id: -1 })
-    .limit(1)
-    .toArray()
-    .then(result => {
-      return result[0]._id;
-    })
-    .catch(err => {
-      return err;
-    });
-};
+const ObjectID = require("mongodb").ObjectID;
+
+const collection = "messages";
 
 const getLastResult = async db => {
-  let result = await queryLastResult(db);
+  let result = await queryLastResult(db, collection);
   return result;
 };
 
 const getAllResult = async db => {
-  let result = await queryAllResult(db);
+  let result = await queryAllResult(db, collection);
   return result;
 };
 
 const sendAllResult = async (db, res) => {
-  let allResults = await getAllResult(db);
+  let allResults = await getAllResult(db, collection);
   res.send(allResults);
   res.end();
 };
