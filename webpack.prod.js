@@ -10,7 +10,7 @@ const express = require("express");
 const path = require("path");
 
 const BUILD_DIR = path.resolve(__dirname, "public");
-const APP_DIR = path.resolve(__dirname, "src");
+const APP_DIR = path.resolve(__dirname, "e/client");
 
 const app = express();
 
@@ -55,7 +55,7 @@ module.exports = merge(common, {
         test: /\.js?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
-        include: `${__dirname}/src`,
+        include: `${__dirname}/src/client`,
         query: {
           plugins: ["transform-runtime"],
           presets: ["env", "react", "flow"]
@@ -65,7 +65,7 @@ module.exports = merge(common, {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
-        include: `${__dirname}/src`,
+        include: `${__dirname}/src/client`,
         query: {
           plugins: ["transform-runtime"],
           presets: ["env", "react", "flow"]

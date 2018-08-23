@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/server.js",
+    "start": "nodemon .src/server/server.js --exec babel-node && webpack -d --watch",
     "dev": "webpack -d --watch",
     "build": "webpack --optimize-minimize --config webpack.prod.js --mode production",
     "lint": "esw webpack.config.* src tools --color",
@@ -13,7 +13,7 @@
     "flow": "flow"
   },
   "description": "Chat client.",
-  "main": "./server/server.js",
+  "main": "./src/server/server.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
