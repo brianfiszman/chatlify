@@ -17,13 +17,18 @@ export const queryLastResult = (db, collection) =>
     .catch(err => err);
 
 export const queryOneResult = (db, res, collection, details) =>
-  db.collection(collection).findOne(details, (err, item) => {
-    res.send(err || item);
-    res.end();
-  });
+  db
+    .collection(collection)
+    .findOne(details, (err, item) => sendResponse(res, err || item));
 
 export const insertToCollection = (db, res, collection, message) =>
-  db.collection(collection).insertOne(message, (err, result) => {
-    res.send(err || result.ops[0]);
-    res.end();
-  });
+  db
+    .collection(collection)
+    .insertOne(message, (err, result) =>
+      sendResponse(res, err || result.ops[0])
+    );
+
+export const sendResponse = (res, data) => {
+  res.send(data);
+  res.end();
+};
