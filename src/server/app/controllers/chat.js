@@ -17,6 +17,14 @@ const genMessage = req => ({
 });
 
 const poll = async (id, res, db) => {
+  res.header("Access-Control-Allow-Origin", "https://www.apoyoescolarna.com.ar");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Requested-With,Content-Type,Accept,content-type,application/json"
+  );
+
   if (id) {
     const waitForNewResults = async i => {
       const lastResult = await getLastResult(db);
@@ -40,8 +48,7 @@ const sendAllResults = async (db, res) =>
   await getAllResults(db, collection).then(result => sendResponse(res, result));
 
 exports.create = (req, res, db) => {
-  if (!req.body.text || !req.body.user)
-    sendResponse(res, "Prohibido mandar fruta");
+  if (!req.body.text || !req.body.user) sendResponse(res, "Prohibido mandar fruta");
   else insert(db, res, collection, genMessage(req));
 };
 
