@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-("use strict");
-
 import { MongoClient } from "mongodb";
 import express from "express";
 import bodyParser from "body-parser";
