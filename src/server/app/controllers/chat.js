@@ -47,9 +47,10 @@ const getAllResults = async db => await queryAllResults(db, collection);
 const sendAllResults = async (db, res) =>
   await getAllResults(db, collection).then(result => sendResponse(res, result));
 
-const create = (req, res, db) => {
+const create = (req, res, db, io) => {
   if (!req.body.text || !req.body.user) sendResponse(res, "Prohibido mandar fruta");
   else insert(db, res, collection, genMessage(req));
+  io.emit("new message", genMessage(req));
 };
 
 const findAll = (req, res, db) => poll(req.query.id, res, db);

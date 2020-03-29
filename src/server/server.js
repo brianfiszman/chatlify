@@ -3,6 +3,7 @@ import { MongoClient } from "mongodb";
 import express from "express";
 import bodyParser from "body-parser";
 import db from "./config/db";
+const io = require("socket.io")();
 
 const app = express();
 
@@ -16,10 +17,16 @@ MongoClient.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err, client) => {
     if (err) return console.log(err);
-    require(__dirname + "/app/routes")(app, client.db("chatlify"));
+    require(__dirname + "/app/routes")(app, io, client.db("chatlify"));
 
-    app.listen(app.get("port"), () => {
+    const server = app.listen(app.get("port"), () => {
       console.log("We are live on ", app.get("port"));
+    });
+
+    io.attach(server);
+
+    io.on("connection", () => {
+      console.log("HELLO");
     });
   }
 );

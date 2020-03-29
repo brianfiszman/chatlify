@@ -2,7 +2,7 @@
 
 const chatRoutes = require("./chat");
 
-module.exports = function(app, db) {
+module.exports = function(app, io, db) {
   app.get("/", (req, res) => {
     res.writeHead(200, {
       "Content-Type": "text/html"
@@ -11,5 +11,5 @@ module.exports = function(app, db) {
     res.end();
   });
 
-  chatRoutes(app, db);
+  chatRoutes(app, io, db);
 };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Message from "./Message";
+import socketClient from "socket.io-client";
 
 class ChatConversation extends Component {
   constructor(props) {
@@ -12,6 +13,17 @@ class ChatConversation extends Component {
   }
 
   componentDidMount() {
+    const { SOCKETHOST } = process.env;
+    const io = socketClient(SOCKETHOST);
+
+    io.on("new message", message => {
+      this.setState(({ messages }) => ({
+        messages: [...messages, message]
+      }));
+
+      this.keepScrollDown();
+    });
+
     const getMessages = () => {
       let lastElement = this.getLastMessageId();
       let url = lastElement ? "/api/chat?id=" + lastElement : "/api/chat";
@@ -20,9 +32,9 @@ class ChatConversation extends Component {
         .then(res => {
           this.setState({ messages: res.data });
           this.keepScrollDown();
-          setTimeout(getMessages, 500);
         })
         .catch(function(error) {
+          console.error(error);
           setTimeout(getMessages, 500);
         });
     };
