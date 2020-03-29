@@ -1,19 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-class InputText extends Component {
-  render() {
-    return (
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Escribir mensaje"
-        onChange={this.props.onTextChange}
-        value={this.props.value}
-        aria-label="Escribir mensaje"
-        aria-describedby="basic-addon2"
-      />
-    );
-  }
-}
+const InputText = ({ onTextChange, value }) => (
+  <input
+    type="text"
+    className="form-control"
+    placeholder="Escribir mensaje"
+    onChange={onTextChange}
+    value={value}
+    aria-label="Escribir mensaje"
+    aria-describedby="basic-addon2"
+  />
+);
 
 export default InputText;

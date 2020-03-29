@@ -1,27 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Message extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <article className="col-12 message-item py-0 mw-100">
-        <section className="title font-weight-bold">
-          {this.props.user + " "}
-          {this.props.timestamps ? (
-            <span className="font-weight-normal text-muted small">
-              {new Date(this.props.timestamps).toLocaleString()}
-            </span>
-          ) : (
-            ""
-          )}
-        </section>
-        <section>{this.props.text}</section>
-      </article>
-    );
-  }
-}
+const Message = ({ user, timestamps, text }) => (
+  <article className="col-12 message-item py-0 mw-100">
+    <section className="title font-weight-bold">
+      {user + " "}
+      {timestamps && (
+        <span className="font-weight-normal text-muted small">
+          {new Date(timestamps).toLocaleString()}
+        </span>
+      )}
+    </section>
+    <section>{text}</section>
+  </article>
+);
 
 export default Message;
