@@ -47,11 +47,13 @@ const getAllResults = async db => await queryAllResults(db, collection);
 const sendAllResults = async (db, res) =>
   await getAllResults(db, collection).then(result => sendResponse(res, result));
 
-exports.create = (req, res, db) => {
+const create = (req, res, db) => {
   if (!req.body.text || !req.body.user) sendResponse(res, "Prohibido mandar fruta");
   else insert(db, res, collection, genMessage(req));
 };
 
-exports.findAll = (req, res, db) => poll(req.query.id, res, db);
-exports.findOne = (req, res, db) =>
+const findAll = (req, res, db) => poll(req.query.id, res, db);
+const findOne = (req, res, db) =>
   queryOneResult(db, res, collection, genObjId(req.params.id));
+
+module.exports = { create, findAll, findOne };

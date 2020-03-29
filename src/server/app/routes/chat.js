@@ -1,8 +1,10 @@
 // routes/note_routes.js
-const chat = require("../controllers/chat");
+const { create, findAll, findOne } = require("../controllers/chat");
 
-module.exports = function(app, db) {
-  app.post("/api/chat", (req, res) => chat.create(req, res, db));
-  app.get("/api/chat", (req, res) => chat.findAll(req, res, db));
-  app.get("/api/chat/:id", (req, res) => chat.findOne(req, res, db));
+const chatRoutes = (app, db) => {
+  app.post("/api/chat", (req, res) => create(req, res, db));
+  app.get("/api/chat", (req, res) => findAll(req, res, db));
+  app.get("/api/chat/:id", (req, res) => findOne(req, res, db));
 };
+
+module.exports = chatRoutes;
