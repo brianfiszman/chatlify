@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 MongoClient.connect(
   db.url,
-  { useNewUrlParser: true },
+  { useNewUrlParser: true, useUnifiedTopology: true },
   (err, client) => {
     if (err) return console.log(err);
     require(__dirname + "/app/routes")(app, client.db("chatlify"));

@@ -13,7 +13,7 @@ export const queryLastResult = (db, collection) =>
     .sort({ _id: -1 })
     .limit(1)
     .toArray()
-    .then(result => result[0]._id)
+    .then(([{ _id }]) => _id)
     .catch(err => err);
 
 export const queryOneResult = (db, res, collection, details) =>
@@ -24,9 +24,7 @@ export const queryOneResult = (db, res, collection, details) =>
 export const insert = (db, res, collection, message) =>
   db
     .collection(collection)
-    .insertOne(message, (err, result) =>
-      sendResponse(res, err || result.ops[0])
-    );
+    .insertOne(message, (err, result) => sendResponse(res, err || result.ops[0]));
 
 export const sendResponse = (res, data) => {
   res.send(data);
