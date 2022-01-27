@@ -28,5 +28,6 @@ MongoClient.connect(
     io.on("connection", () => {
       console.log("HELLO");
     });
-  }
+  },
+  { useNewUrlParser: true, useUnifiedTopology: true }
 );
